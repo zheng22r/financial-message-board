@@ -62,7 +62,7 @@ export class PostsService {
     const postData = new FormData();
     postData.append("title", title);
     postData.append("content", content);
-    postData.append("image", image, title);
+    // postData.append("image", image, title);
     this.http
       .post<{ message: string; post: Post }>(
         "http://localhost:3000/api/posts",

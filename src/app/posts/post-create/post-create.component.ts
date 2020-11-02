@@ -5,7 +5,7 @@ import { Subscription } from "rxjs";
 
 import { PostsService } from "../posts.service";
 import { Post } from "../post.model";
-import { mimeType } from "./mime-type.validator";
+// import { mimeType } from "./mime-type.validator";
 import { AuthService } from "../../auth/auth.service";
 
 @Component({
@@ -42,8 +42,8 @@ export class PostCreateComponent implements OnInit, OnDestroy {
       }),
       content: new FormControl(null, { validators: [Validators.required] }),
       image: new FormControl(null, {
-        validators: [Validators.required],
-        asyncValidators: [mimeType]
+        // validators: [Validators.required],
+        // asyncValidators: [mimeType]
       })
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -57,13 +57,13 @@ export class PostCreateComponent implements OnInit, OnDestroy {
             id: postData._id,
             title: postData.title,
             content: postData.content,
-            imagePath: postData.imagePath,
+            imagePath: "",
             creator: postData.creator
           };
           this.form.setValue({
             title: this.post.title,
             content: this.post.content,
-            image: this.post.imagePath
+            image: ""
           });
         });
       } else {
