@@ -8,8 +8,10 @@ const router = express.Router();
 
 router.post("/signup", (req, res, next) => {
   bcrypt.hash(req.body.password, 10).then(hash => {
+    console.log(req.body.name)
     const user = new User({
       email: req.body.email,
+      name: req.body.name,
       password: hash
     });
     user
@@ -54,7 +56,8 @@ router.post("/login", (req, res, next) => {
       res.status(200).json({
         token: token,
         expiresIn: 3600,
-        userId: fetchedUser._id
+        userId: fetchedUser._id,
+        name: fetchedUser.name
       });
     })
     .catch(err => {
