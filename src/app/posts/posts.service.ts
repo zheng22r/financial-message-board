@@ -9,7 +9,7 @@ import { Post } from "./post.model";
 @Injectable({ providedIn: "root" })
 export class PostsService {
   private posts: Post[] = [];
-  private postsUpdated = new Subject<{ posts: Post[]; postCount: number }>();
+  private updatedPosts = new Subject<{ posts: Post[]; postCount: number }>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -37,7 +37,7 @@ export class PostsService {
       )
       .subscribe(transformedPostData => {
         this.posts = transformedPostData.posts;
-        this.postsUpdated.next({
+        this.updatedPosts.next({
           posts: [...this.posts],
           postCount: transformedPostData.maxPosts
         });
@@ -45,7 +45,7 @@ export class PostsService {
   }
 
   getPostUpdateListener() {
-    return this.postsUpdated.asObservable();
+    return this.updatedPosts.asObservable();
   }
 
   getPost(id: string) {
