@@ -9,10 +9,17 @@ a {
   color: white;
 }
 
+img {
+  width: 100px;
+  height: 50px;
+  display: flex;
+  margin: 0 10px;
+}
+
 ul {
   display: flex;
 }
 
-.spacer {
+.space {
   flex: 1 1 auto;
 }

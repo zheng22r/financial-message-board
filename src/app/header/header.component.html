@@ -1,8 +1,11 @@
 <mat-toolbar color="primary">
   <span>
+    <img src="../../assets/images/header-chart.jpg">
+  </span>
+  <span>
     <a routerLink="/">Financial Message Board</a>
   </span>
-  <span class="spacer"></span>
+  <span class="space"></span>
   <ul>
     <li *ngIf="userIsAuthenticated">
       <a mat-button routerLink="/create" routerLinkActive="mat-accent">New Post</a>
