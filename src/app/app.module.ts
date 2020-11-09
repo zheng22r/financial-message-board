@@ -35,6 +35,22 @@ import { DateInputsModule } from "@progress/kendo-angular-dateinputs";
 import { ChartsModule } from "@progress/kendo-angular-charts";
 import "hammerjs";
 import "@progress/kendo-ui";
+import { FooterComponent } from "./stock/components/footer/footer.component";
+import { StocksComponent } from "./stock/components/stocks/stocks.component";
+import { StockListComponent } from "./stock/components/stock-list/stock-list.component";
+import { NavigationComponent } from "./stock/components/navigation/navigation.component";
+import { HeatmapComponent } from "./stock/components/heatmap/heatmap.component";
+import { BadgeComponent } from "./stock/components/badge/badge.component";
+import { UserProfileComponent } from "./stock/components/user-profile/user-profile.component";
+import { RealTimeDataComponent } from "./stock/components/real-time-data/real-time-data.component";
+import { StockChartComponent } from "./stock/components/stock-chart/stock-chart.component";
+import { StockDetailsComponent } from "./stock/components/stock-details/stock-details.component";
+import { NumberFormatPipe } from "./stock/pipes/number-format.pipe";
+import { DropDownListPopupSelectorDirective } from "./stock/directives/dropdownlist-popup-selector.directive";
+import { ActionButtonsComponent } from "./stock/components/action-buttons/action-buttons.component";
+import { LayoutModule } from "@progress/kendo-angular-layout";
+import { StockDataService } from "./stock/services/stock-data.service";
+import { HeaderStockComponent } from "./stock/components/header/header.component";
 
 @NgModule({
   declarations: [
@@ -45,6 +61,20 @@ import "@progress/kendo-ui";
     LoginComponent,
     SignupComponent,
     ErrorComponent,
+    FooterComponent,
+    StocksComponent,
+    StockListComponent,
+    NavigationComponent,
+    HeatmapComponent,
+    BadgeComponent,
+    UserProfileComponent,
+    RealTimeDataComponent,
+    StockChartComponent,
+    StockDetailsComponent,
+    NumberFormatPipe,
+    DropDownListPopupSelectorDirective,
+    ActionButtonsComponent,
+    HeaderStockComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,8 +99,10 @@ import "@progress/kendo-ui";
     ChartsModule,
     DialogsModule,
     DateInputsModule,
+    LayoutModule,
   ],
   providers: [
+    StockDataService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
