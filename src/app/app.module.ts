@@ -24,7 +24,6 @@ import { SignupComponent } from "./auth/signup/signup.component";
 import { AuthInterceptor } from "./auth/auth-interceptor";
 import { ErrorInterceptor } from "./error-interceptor";
 import { ErrorComponent } from "./error/error.component";
-import { StockComponent } from "./stock/stock.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 
@@ -37,8 +36,6 @@ import { ChartsModule } from "@progress/kendo-angular-charts";
 import "hammerjs";
 import "@progress/kendo-ui";
 
-import { StockDataService } from "./stock/stock.service";
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +45,6 @@ import { StockDataService } from "./stock/stock.service";
     LoginComponent,
     SignupComponent,
     ErrorComponent,
-    StockComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +71,6 @@ import { StockDataService } from "./stock/stock.service";
     DateInputsModule,
   ],
   providers: [
-    StockDataService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
