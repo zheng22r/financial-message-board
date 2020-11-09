@@ -24,7 +24,20 @@ import { SignupComponent } from "./auth/signup/signup.component";
 import { AuthInterceptor } from "./auth/auth-interceptor";
 import { ErrorInterceptor } from "./error-interceptor";
 import { ErrorComponent } from "./error/error.component";
-import {StockComponent} from "./stock/stock.component";
+import { StockComponent } from "./stock/stock.component";
+import { FlexLayoutModule } from "@angular/flex-layout";
+
+
+import { DropDownsModule } from "@progress/kendo-angular-dropdowns";
+import { GridModule } from "@progress/kendo-angular-grid";
+import { ButtonsModule } from "@progress/kendo-angular-buttons";
+import { DialogsModule } from "@progress/kendo-angular-dialog";
+import { DateInputsModule } from "@progress/kendo-angular-dateinputs";
+import { ChartsModule } from "@progress/kendo-angular-charts";
+import "hammerjs";
+import "@progress/kendo-ui";
+
+import { StockDataService } from "./stock/stock.service";
 
 @NgModule({
   declarations: [
@@ -51,9 +64,18 @@ import {StockComponent} from "./stock/stock.component";
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule,
+    DropDownsModule,
+    BrowserAnimationsModule,
+    GridModule,
+    ButtonsModule,
+    ChartsModule,
+    DialogsModule,
+    DateInputsModule,
   ],
   providers: [
+    StockDataService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
