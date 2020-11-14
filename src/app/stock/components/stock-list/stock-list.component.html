@@ -1,38 +1,38 @@
-<div class="d-flex justify-content-center mx-0">
-    <div class="row">
-        <app-badge [item]="stockDataService.selectedStock"></app-badge>
-    </div>
-</div>
+<!--<div class="d-flex justify-content-center mx-0">-->
+<!--    <div class="row">-->
+<!--        <app-badge [item]="stockDataService.selectedStock"></app-badge>-->
+<!--    </div>-->
+<!--</div>-->
 
 <div class="container">
     <div class="row py-4 d-flex justify-content-between">
-        <div class="col col-3 d-flex justify-content-start px-0">
-            <kendo-dropdownlist
-                kendoDropDownFilter
-                appDropDownListPopupSelector
-                [data]="uncategorizedSymbols"
-                class="dropdownlist-add-new mr-3"
-                [popupSettings]="{ width: '250px' }"
-                (valueChange)="addStockToPortfolio($event)"
-            >
-                <ng-template kendoDropDownListValueTemplate>
-                    <span class="k-icon k-i-plus"></span>
-                    Add new
-                </ng-template>
-            </kendo-dropdownlist>
-            <button
-                kendoButton
-                *ngIf="selectedRows.length"
-                class="btn-remove-stock"
-                [look]="'flat'"
-                [icon]="'trash'"
-                (click)="removeStockFromPortfolio()"
-            >
-                Remove
-            </button>
-        </div>
+<!--        <div class="col col-3 d-flex justify-content-start px-0">-->
+<!--            <kendo-dropdownlist-->
+<!--                kendoDropDownFilter-->
+<!--                appDropDownListPopupSelector-->
+<!--                [data]="uncategorizedSymbols"-->
+<!--                class="dropdownlist-add-new mr-3"-->
+<!--                [popupSettings]="{ width: '250px' }"-->
+<!--                (valueChange)="addStockToPortfolio($event)"-->
+<!--            >-->
+<!--                <ng-template kendoDropDownListValueTemplate>-->
+<!--                    <span class="k-icon k-i-plus"></span>-->
+<!--                    Add new-->
+<!--                </ng-template>-->
+<!--            </kendo-dropdownlist>-->
+<!--            <button-->
+<!--                kendoButton-->
+<!--                *ngIf="selectedRows.length"-->
+<!--                class="btn-remove-stock"-->
+<!--                [look]="'flat'"-->
+<!--                [icon]="'trash'"-->
+<!--                (click)="removeStockFromPortfolio()"-->
+<!--            >-->
+<!--                Remove-->
+<!--            </button>-->
+<!--        </div>-->
 
-        <app-navigation class="col"></app-navigation>
+<!--        <app-navigation class="col"></app-navigation>-->
 
         <div class="col-3">
             <!-- filter drop-down placeholder -->

@@ -8,7 +8,6 @@
     <mat-accordion mult i="true" *ngIf="posts.length > 0 && !isLoading">
       <mat-expansion-panel *ngFor="let post of posts">
         <mat-expansion-panel-header>
-          {{ userId }}
           {{ post.title }}
         </mat-expansion-panel-header>
         <div class="post-image" *ngIf="post.imagePath">

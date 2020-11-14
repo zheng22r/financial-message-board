@@ -5,7 +5,7 @@ import { ItemArgs } from "@progress/kendo-angular-dropdowns";
 
 import { Interval } from "../../models";
 import { StockDataService } from "../../services/stock-data.service";
-import { normalizeSelectionRange, rangeAndIntervalCompatible } from "../../pipes/helpers";
+import { rangeAndIntervalCompatible } from "../../pipes/helpers";
 
 @Component({
   selector: "app-stock-chart",
@@ -17,27 +17,21 @@ export class StockChartComponent {
   public normalizedRange: SelectionRange = {start: addDays(new Date(), -4), end: new Date()};
 
   public timeFilters: Array<{ name: string, duration: number }> = [
-    {name: "1H", duration: MS_PER_DAY / 24},
-    {name: "4H", duration: MS_PER_DAY / 6},
-    {name: "12H", duration: MS_PER_DAY / 2},
     {name: "1D", duration: MS_PER_DAY},
     {name: "4D", duration: MS_PER_DAY * 4},
     {name: "1W", duration: MS_PER_DAY * 7},
     {name: "1M", duration: MS_PER_DAY * 30},
     {name: "6M", duration: MS_PER_DAY * 30 * 6},
   ];
-  public activeTimeFilter = this.timeFilters[4].duration;
+  public activeTimeFilter = this.timeFilters[2].duration;
 
   public intervals: Array<{ name: string, interval: Interval, duration: number }> = [
-    {name: "5M", interval: {unit: "minutes", step: 5}, duration: MS_PER_DAY / 24 / 12},
-    {name: "15M", interval: {unit: "minutes", step: 15}, duration: MS_PER_DAY / 24 / 4},
-    {name: "30M", interval: {unit: "minutes", step: 30}, duration: MS_PER_DAY / 24 / 2},
     {name: "1H", interval: {unit: "hours", step: 1}, duration: MS_PER_DAY / 24},
     {name: "4H", interval: {unit: "hours", step: 4}, duration: MS_PER_DAY / 6},
     {name: "1D", interval: {unit: "days", step: 1}, duration: MS_PER_DAY},
     {name: "1W", interval: {unit: "weeks", step: 1}, duration: MS_PER_DAY * 7}
   ];
-  public selectedInterval: { name: string, interval: Interval, duration: number } = this.intervals[5];
+  public selectedInterval: { name: string, interval: Interval, duration: number } = this.intervals[1];
 
   public chartType: "candle" | "line" | "area" = "candle";
   public charts: Array<{ text: string, value: string }> = [
