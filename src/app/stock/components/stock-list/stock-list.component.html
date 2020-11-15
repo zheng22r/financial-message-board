@@ -22,7 +22,7 @@
           <span class="grid-header-subtitle">(Intraday)</span>
         </ng-template>
         <ng-template kendoGridCellTemplate let-dataItem>
-          {{ dataItem.price | currency: stockDataService.selectedCurrency:'symbol' }}
+          {{ dataItem.price | currency: stockDataService.currency:'symbol' }}
         </ng-template>
       </kendo-grid-column>
 

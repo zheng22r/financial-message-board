@@ -4,10 +4,6 @@ import { PlotBand } from "@progress/kendo-angular-charts";
 import { Interval, TimeIntervalUnitsInMinutes, StockIntervalDetails } from "../../models";
 import { StockDataService } from "../../services/stock-data.service";
 
-const currencies = {
-  USD: "$",
-};
-
 @Component({
   selector: "app-stock-details",
   templateUrl: "./stock-details.component.html",
@@ -33,10 +29,6 @@ export class StockDetailsComponent implements OnChanges {
     volume: (value: number[]) => value.reduce((total, current) => total + current, 0)
   };
   public categoryPlotBands: PlotBand[];
-
-  public get currency(): string {
-    return currencies[this.stockDataService.selectedCurrency];
-  }
 
   private previousColumnChartItem: StockIntervalDetails;
 
