@@ -16,7 +16,7 @@ router.post("/signup", (req, res, next) => {
       .save()
       .then(result => {
         res.status(200).json({
-          message: "User created!",
+          message: "User created successfully!",
           result: result
         });
       })
@@ -29,7 +29,7 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.post("/login", (req, res, next) => {
-  let fetchedUser;
+  let returnedUser;
   User.findOne({ email: req.body.email })
     .then(user => {
       if (!user) {
@@ -37,7 +37,7 @@ router.post("/login", (req, res, next) => {
           message: "Invalid Password or Email"
         });
       }
-      fetchedUser = user;
+      returnedUser = user;
       return bcrypt.compare(req.body.password, user.password);
     })
     .then(result => {
@@ -46,15 +46,16 @@ router.post("/login", (req, res, next) => {
           message: "Invalid Password or Email"
         });
       }
+      // Generate Token to keep login status for one hour
       const token = jwt.sign(
-        { email: fetchedUser.email, userId: fetchedUser._id },
-        "secret_this_should_be_longer",
+        { email: returnedUser.email, userId: returnedUser._id },
+        "private_key_testing-asd-asd-asd-asd-asd-asd--sdk-sdk",
         { expiresIn: "1h" }
       );
       res.status(200).json({
         token: token,
         expiresIn: 3600,
-        userId: fetchedUser._id
+        userId: returnedUser._id
       });
     })
     .catch(err => {
