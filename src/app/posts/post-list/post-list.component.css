@@ -1,6 +1,11 @@
 :host {
   display: block;
-  margin-top: 1rem;
+  margin-top: 10px;
+}
+
+.post {
+  width: 40%;
+  margin-top: 30px;
 }
 
 mat-spinner {
@@ -15,11 +20,6 @@ mat-paginator {
   text-align: center;
 }
 
-.post-image {
-  width: 100%;
-}
-
 .post-image img {
-  width: 100%;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  width: 25%;
 }

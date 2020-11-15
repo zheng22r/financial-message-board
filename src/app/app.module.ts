@@ -39,8 +39,6 @@ import { StocksComponent } from "./stock/components/stocks/stocks.component";
 import { StockListComponent } from "./stock/components/stock-list/stock-list.component";
 import { NavigationComponent } from "./stock/components/navigation/navigation.component";
 import { BadgeComponent } from "./stock/components/badge/badge.component";
-import { UserProfileComponent } from "./stock/components/user-profile/user-profile.component";
-import { RealTimeDataComponent } from "./stock/components/real-time-data/real-time-data.component";
 import { StockChartComponent } from "./stock/components/stock-chart/stock-chart.component";
 import { StockDetailsComponent } from "./stock/components/stock-details/stock-details.component";
 import { NumberFormatPipe } from "./stock/pipes/number-format.pipe";
@@ -62,8 +60,6 @@ import { StockDataService } from "./stock/services/stock-data.service";
     StockListComponent,
     NavigationComponent,
     BadgeComponent,
-    UserProfileComponent,
-    RealTimeDataComponent,
     StockChartComponent,
     StockDetailsComponent,
     NumberFormatPipe,

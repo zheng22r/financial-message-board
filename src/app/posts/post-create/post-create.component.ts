@@ -5,7 +5,6 @@ import { Subscription } from "rxjs";
 
 import { PostsService } from "../posts.service";
 import { Post } from "../post.model";
-// import { mimeType } from "./mime-type.validator";
 import { AuthService } from "../../auth/auth.service";
 
 @Component({
