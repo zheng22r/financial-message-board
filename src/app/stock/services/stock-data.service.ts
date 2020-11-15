@@ -13,27 +13,13 @@ import { StockIntervalDetails } from "../models";
 @Injectable()
 export class StockDataService {
     public data: BehaviorSubject<Stock[]> = new BehaviorSubject(stocksInPortfolio);
-
-    public selectedCurrency = "USD";
     public selectedStock: Stock;
 
     public getStockData(): Observable<Stock[]> {
         return this.data
             .pipe(map((stocks) => {
-                if (this.selectedCurrency === "USD") {
                     return stocks;
-                }
-
-                return stocks.map((item) => ({ ...item, price: this.convertCurrency(item) }));
             }));
-    }
-
-    public convertCurrency(dataItem: Stock): any {
-        const currency = { GBP: 0.77, EUR: 0.9 };
-
-        if (this.selectedCurrency === "USD") { return dataItem.price; }
-
-        return Number((dataItem.price * currency[this.selectedCurrency]).toFixed(2));
     }
 
     public getUncategorizedSymbols(): string[] {
