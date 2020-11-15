@@ -38,13 +38,13 @@
           [textField]="'text'"
           [valuePrimitive]="true"
           [(value)]="chartType">
-      <ng-template kendoDropDownListValueTemplate let-dataItem>
+      <ng-template kendoDropDownListValueTemplate let-dataItem class="interval">
                     <span class="chart-category selected d-flex align-items-center">
                         <img src="../../../../assets/{{ dataItem.value }}.png"/>
                       {{ dataItem.text }}
                     </span>
       </ng-template>
-      <ng-template kendoDropDownListItemTemplate let-dataItem>
+      <ng-template kendoDropDownListItemTemplate let-dataItem class="chart-type">
                     <span class="chart-category d-flex align-items-center">
                         <img src="assets/{{ dataItem.value }}.png"/>
                       {{ dataItem.text }}
