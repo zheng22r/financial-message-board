@@ -26,7 +26,7 @@ import { ErrorInterceptor } from "./error-interceptor";
 import { ErrorComponent } from "./error/error.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
 
-
+// Stock Chart import
 import { DropDownsModule } from "@progress/kendo-angular-dropdowns";
 import { GridModule } from "@progress/kendo-angular-grid";
 import { ButtonsModule } from "@progress/kendo-angular-buttons";
@@ -35,6 +35,17 @@ import { DateInputsModule } from "@progress/kendo-angular-dateinputs";
 import { ChartsModule } from "@progress/kendo-angular-charts";
 import "hammerjs";
 import "@progress/kendo-ui";
+import { StocksComponent } from "./stock/components/stocks/stocks.component";
+import { StockListComponent } from "./stock/components/stock-list/stock-list.component";
+import { NavigationComponent } from "./stock/components/navigation/navigation.component";
+import { BadgeComponent } from "./stock/components/badge/badge.component";
+import { StockChartComponent } from "./stock/components/stock-chart/stock-chart.component";
+import { StockDetailsComponent } from "./stock/components/stock-details/stock-details.component";
+import { NumberFormatPipe } from "./stock/pipes/number-format.pipe";
+import { DropDownListPopupSelectorDirective } from "./stock/directives/dropdownlist-popup-selector.directive";
+import { ActionButtonsComponent } from "./stock/components/action-buttons/action-buttons.component";
+import { LayoutModule } from "@progress/kendo-angular-layout";
+import { StockDataService } from "./stock/services/stock-data.service";
 
 @NgModule({
   declarations: [
@@ -45,6 +56,15 @@ import "@progress/kendo-ui";
     LoginComponent,
     SignupComponent,
     ErrorComponent,
+    StocksComponent,
+    StockListComponent,
+    NavigationComponent,
+    BadgeComponent,
+    StockChartComponent,
+    StockDetailsComponent,
+    NumberFormatPipe,
+    DropDownListPopupSelectorDirective,
+    ActionButtonsComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,8 +89,10 @@ import "@progress/kendo-ui";
     ChartsModule,
     DialogsModule,
     DateInputsModule,
+    LayoutModule,
   ],
   providers: [
+    StockDataService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],

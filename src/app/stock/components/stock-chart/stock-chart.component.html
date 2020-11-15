@@ -1,0 +1,70 @@
+<div class="container">
+  <div>
+    <div fxLayout="row">
+
+      <div fxLayout="row">
+        <div class="time-interval" *ngFor="let filter of timeFilters">
+                <span
+                  [ngClass]="{ 'active': activeTimeFilter === filter.duration }"
+                  class="list-item time-filter-item"
+                  (click)="onTimeFilterClick(filter.duration)"
+                >
+                    {{ filter.name }}
+                </span>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-4 col-md-6 col-lg-4 text-center text-sm-right mt-3 mt-sm-0">
+        <kendo-dropdownlist
+          class="dropdown-list-selection interval"
+          [style.width.px]="135"
+          [style.marginRight.px]="8"
+          [data]="intervals"
+          [iconClass]="'k-i-arrow-chevron-down'"
+          [textField]="'name'"
+          [valueField]="'interval'"
+          [(value)]="selectedInterval"
+          [itemDisabled]="disableIncompatibleIntervals"
+        >
+          <ng-template kendoDropDownListValueTemplate let-dataItem>
+            <span class="service-category"> Interval: {{ dataItem?.name }}</span>
+          </ng-template>
+        </kendo-dropdownlist>
+      </div>
+        <kendo-dropdownlist
+          [style.width.px]="140"
+          class="dropdown-list-selection"
+          [data]="charts"
+          [iconClass]="'k-i-arrow-chevron-down'"
+          [valueField]="'value'"
+          [textField]="'text'"
+          [valuePrimitive]="true"
+          [(value)]="chartType"
+        >
+      <ng-template kendoDropDownListValueTemplate let-dataItem>
+                    <span class="chart-category selected d-flex align-items-center">
+                        <img src="../../../../assets/{{ dataItem.value }}.png"/>
+                      {{ dataItem.text }}
+                    </span>
+      </ng-template>
+      <ng-template kendoDropDownListItemTemplate let-dataItem>
+                    <span class="chart-category d-flex align-items-center">
+                        <img src="assets/{{ dataItem.value }}.png"/>
+                      {{ dataItem.text }}
+                    </span>
+      </ng-template>
+      </kendo-dropdownlist>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-stock-details
+        [chartType]="chartType"
+        [interval]="selectedInterval?.interval"
+        [range]="normalizedRange"
+        [symbol]="stockDataService.selectedStock?.symbol"
+      >
+      </app-stock-details>
+    </div>
+  </div>
+</div>
