@@ -6,7 +6,6 @@ import { orderBy, SortDescriptor } from "@progress/kendo-data-query";
 import { SelectionRange } from "@progress/kendo-angular-dateinputs";
 import { MS_PER_MINUTE } from "@progress/kendo-date-math";
 
-// the two collections are mutated directly, simulating an in-memory db data persistence
 import { stocksInPortfolio, uncategorizedStocks, heatmapStocks } from "../data/stocks";
 import { Stock } from "../models";
 import { StockIntervalDetails } from "../models";

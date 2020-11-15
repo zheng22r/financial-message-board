@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { SelectionRange } from '@progress/kendo-angular-dateinputs';
 import { PlotBand } from '@progress/kendo-angular-charts';
-import { Interval, IntervalUnitsMap, StockIntervalDetails } from "../../models";
+import { Interval, TimeIntervalUnitsInMinutes, StockIntervalDetails } from "../../models";
 import { StockDataService } from "../../services/stock-data.service";
 
 const currencies = {
@@ -50,7 +50,7 @@ export class StockDetailsComponent implements OnChanges {
                 return;
             }
 
-            const intervalInMinutes = this.interval.step * IntervalUnitsMap[this.interval.unit];
+            const intervalInMinutes = this.interval.step * TimeIntervalUnitsInMinutes[this.interval.unit];
             this.stockData = this.stockDataService.getStockIntervalDetails(this.symbol, this.range, intervalInMinutes);
             this.configureVolumeValueAxisHeight();
             this.composeCategoryPlotBands();

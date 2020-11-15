@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { MS_PER_DAY, addDays, addMonths } from "@progress/kendo-date-math";
+import { MS_PER_DAY, addDays } from "@progress/kendo-date-math";
 import { SelectionRange } from "@progress/kendo-angular-dateinputs";
 import { ItemArgs } from "@progress/kendo-angular-dropdowns";
 
@@ -47,7 +47,7 @@ export class StockChartComponent {
 
   public disableIncompatibleIntervals = (args: ItemArgs): boolean => {
     return !rangeAndIntervalCompatible(this.displayedDuration, args.dataItem.duration);
-  };
+  }
 
   public onTimeFilterClick(duration: number): void {
     if (this.activeTimeFilter === duration) {
@@ -65,16 +65,6 @@ export class StockChartComponent {
     this.displayedDuration = duration;
     this.selectFirstCompatibleInterval(duration);
   }
-
-  // public handleRangeChange(start: Date, end: Date): void {
-  //     this.normalizedRange = normalizeSelectionRange(start, end, this.calendarMin, this.calendarMax);
-  //
-  //     if (this.normalizedRange.start && this.normalizedRange.end) {
-  //         this.activeTimeFilter = null;
-  //         this.displayedDuration = this.normalizedRange.end.getTime() - this.normalizedRange.start.getTime();
-  //         this.selectFirstCompatibleInterval(this.displayedDuration);
-  //     }
-  // }
 
   public selectFirstCompatibleInterval(displayedDuration: number): void {
     if (rangeAndIntervalCompatible(displayedDuration, this.selectedInterval.duration)) {

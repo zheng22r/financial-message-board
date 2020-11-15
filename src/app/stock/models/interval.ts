@@ -5,8 +5,8 @@ export interface Interval {
     step: number;
 }
 
-// maps a unit to the corresponding number of minutes
-export const IntervalUnitsMap = {
+// convert all to minutes
+export const TimeIntervalUnitsInMinutes = {
     minutes: 1,
     hours: 60,
     days: 1440,

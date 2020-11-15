@@ -52,10 +52,8 @@ export const normalizeSelectionRange = (start: Date, end: Date, min: Date, max: 
 };
 
 export const rangeAndIntervalCompatible = (rangeDuration: number, intervalDuration: number) => {
-    // disallow the selection of intervals greater than the currently selected range
     const intervalGreaterThanRange = intervalDuration > rangeDuration;
 
-    // disallow the selection of intervals smaller than 1 hour for ranges greater than 3 days
     const intervalTooSmallForRange = rangeDuration > (MS_PER_DAY * 3) && intervalDuration < (MS_PER_DAY / 24);
 
     return !intervalGreaterThanRange && !intervalTooSmallForRange;
