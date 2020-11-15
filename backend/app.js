@@ -13,10 +13,10 @@ mongoose
     "mongodb+srv://max:xlWZgzxRs1Xy8vwr@cluster0.urqcg.mongodb.net/project?retryWrites=true&w=majority"
   )
   .then(() => {
-    console.log("Connected to database!");
+    console.log("Successfully connected to database!");
   })
   .catch(() => {
-    console.log("Connection failed!");
+    console.log("Failed to connect to database");
   });
 
 app.use(bodyParser.json());
