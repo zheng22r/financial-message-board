@@ -45,7 +45,7 @@ export class StockChartComponent {
 
   public disableIncompatibleIntervals = (args: ItemArgs): boolean => {
     return !rangeAndIntervalCompatible(this.displayedDuration, args.dataItem.duration);
-  }
+  };
 
   public onTimeFilterClick(duration: number): void {
     if (this.activeTimeFilter === duration) {
