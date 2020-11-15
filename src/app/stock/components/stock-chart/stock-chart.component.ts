@@ -28,16 +28,14 @@ export class StockChartComponent {
   public intervals: Array<{ name: string, interval: Interval, duration: number }> = [
     {name: "1H", interval: {unit: "hours", step: 1}, duration: MS_PER_DAY / 24},
     {name: "4H", interval: {unit: "hours", step: 4}, duration: MS_PER_DAY / 6},
-    {name: "1D", interval: {unit: "days", step: 1}, duration: MS_PER_DAY},
-    {name: "1W", interval: {unit: "weeks", step: 1}, duration: MS_PER_DAY * 7}
+    {name: "1D", interval: {unit: "days", step: 4}, duration: MS_PER_DAY},
+    {name: "1W", interval: {unit: "weeks", step: 4}, duration: MS_PER_DAY * 7}
   ];
   public selectedInterval: { name: string, interval: Interval, duration: number } = this.intervals[1];
 
-  public chartType: "candle" | "line" | "area" = "candle";
-  public charts: Array<{ text: string, value: string }> = [
+  public chartType = "candle";
+  public charts = [
     {text: "Candle", value: "candle"},
-    // {text: "Line", value: "line"},
-    // {text: "Area", value: "area"}
   ];
 
   private displayedDuration: number = this.activeTimeFilter;
@@ -47,7 +45,7 @@ export class StockChartComponent {
 
   public disableIncompatibleIntervals = (args: ItemArgs): boolean => {
     return !rangeAndIntervalCompatible(this.displayedDuration, args.dataItem.duration);
-  }
+  };
 
   public onTimeFilterClick(duration: number): void {
     if (this.activeTimeFilter === duration) {

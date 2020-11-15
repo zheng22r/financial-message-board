@@ -6,7 +6,7 @@ import { orderBy, SortDescriptor } from "@progress/kendo-data-query";
 import { SelectionRange } from "@progress/kendo-angular-dateinputs";
 import { MS_PER_MINUTE } from "@progress/kendo-date-math";
 
-import { stocksInPortfolio, uncategorizedStocks, heatmapStocks } from "../data/stocks";
+import { stocksInPortfolio, unsortedStocks, heatmapStocks } from "../data/stocks";
 import { Stock } from "../models";
 import { StockIntervalDetails } from "../models";
 
@@ -17,7 +17,7 @@ export class StockDataService {
     public selectedCurrency = "USD";
     public selectedStock: Stock;
 
-    public getDataStream(): Observable<Stock[]> {
+    public getStockData(): Observable<Stock[]> {
         return this.data
             .pipe(map((stocks) => {
                 if (this.selectedCurrency === "USD") {
@@ -28,15 +28,6 @@ export class StockDataService {
             }));
     }
 
-    public query(sort: SortDescriptor[] = []): void {
-        const data = orderBy(stocksInPortfolio, sort);
-        this.data.next(data);
-    }
-
-    public getHeatmapStocks(): Array<any> {
-        return heatmapStocks;
-    }
-
     public convertCurrency(dataItem: Stock): any {
         const currency = { GBP: 0.77, EUR: 0.9 };
 
@@ -45,33 +36,12 @@ export class StockDataService {
         return Number((dataItem.price * currency[this.selectedCurrency]).toFixed(2));
     }
 
-    public changeCurrency(selectedCurrency: string): void {
-        this.selectedCurrency = selectedCurrency;
-        this.data.next(stocksInPortfolio);
-    }
-
-    public addToPortfolio(symbol: string): void {
-        const targetIndex = uncategorizedStocks.findIndex(stock => stock.symbol === symbol);
-        const target = uncategorizedStocks.splice(targetIndex, 1)[0];
-
-        stocksInPortfolio.unshift(target);
-        this.data.next(stocksInPortfolio);
-    }
-
-    public removeFromPortfolio(symbol: string): void {
-        const targetIndex = stocksInPortfolio.findIndex(stock => stock.symbol === symbol);
-        const target = stocksInPortfolio.splice(targetIndex, 1)[0];
-
-        uncategorizedStocks.unshift(target);
-        this.data.next(stocksInPortfolio);
-    }
-
     public getUncategorizedSymbols(): string[] {
-        return uncategorizedStocks.map(stock => stock.symbol);
+        return unsortedStocks.map(stock => stock.symbol);
     }
 
     public getStockIntervalDetails(symbol: string, range: SelectionRange, intervalInMinutes: number): StockIntervalDetails[] {
-        const stock = stocksInPortfolio.concat(uncategorizedStocks).find(st => st.symbol === symbol);
+        const stock = stocksInPortfolio.concat(unsortedStocks).find(st => st.symbol === symbol);
         return this.generateDataForSymbol(stock, intervalInMinutes, range);
     }
 

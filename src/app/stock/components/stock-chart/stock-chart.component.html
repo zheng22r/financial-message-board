@@ -7,8 +7,7 @@
                 <span
                   [ngClass]="{ 'active': activeTimeFilter === filter.duration }"
                   class="list-item time-filter-item"
-                  (click)="onTimeFilterClick(filter.duration)"
-                >
+                  (click)="onTimeFilterClick(filter.duration)">
                     {{ filter.name }}
                 </span>
         </div>
@@ -24,8 +23,7 @@
           [textField]="'name'"
           [valueField]="'interval'"
           [(value)]="selectedInterval"
-          [itemDisabled]="disableIncompatibleIntervals"
-        >
+          [itemDisabled]="disableIncompatibleIntervals">
           <ng-template kendoDropDownListValueTemplate let-dataItem>
             <span class="service-category"> Interval: {{ dataItem?.name }}</span>
           </ng-template>
@@ -39,8 +37,7 @@
           [valueField]="'value'"
           [textField]="'text'"
           [valuePrimitive]="true"
-          [(value)]="chartType"
-        >
+          [(value)]="chartType">
       <ng-template kendoDropDownListValueTemplate let-dataItem>
                     <span class="chart-category selected d-flex align-items-center">
                         <img src="../../../../assets/{{ dataItem.value }}.png"/>
@@ -62,8 +59,7 @@
         [chartType]="chartType"
         [interval]="selectedInterval?.interval"
         [range]="normalizedRange"
-        [symbol]="stockDataService.selectedStock?.symbol"
-      >
+        [symbol]="stockDataService.selectedStock?.symbol">
       </app-stock-details>
     </div>
   </div>
