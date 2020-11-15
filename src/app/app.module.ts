@@ -37,7 +37,6 @@ import "hammerjs";
 import "@progress/kendo-ui";
 import { StocksComponent } from "./stock/components/stocks/stocks.component";
 import { StockListComponent } from "./stock/components/stock-list/stock-list.component";
-import { NavigationComponent } from "./stock/components/navigation/navigation.component";
 import { BadgeComponent } from "./stock/components/badge/badge.component";
 import { StockChartComponent } from "./stock/components/stock-chart/stock-chart.component";
 import { StockDetailsComponent } from "./stock/components/stock-details/stock-details.component";
@@ -58,7 +57,6 @@ import { StockDataService } from "./stock/services/stock-data.service";
     ErrorComponent,
     StocksComponent,
     StockListComponent,
-    NavigationComponent,
     BadgeComponent,
     StockChartComponent,
     StockDetailsComponent,

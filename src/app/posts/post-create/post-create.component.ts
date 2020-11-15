@@ -13,8 +13,6 @@ import { AuthService } from "../../auth/auth.service";
   styleUrls: ["./post-create.component.css"]
 })
 export class PostCreateComponent implements OnInit, OnDestroy {
-  enteredTitle = "";
-  enteredContent = "";
   post: Post;
   isLoading = false;
   form: FormGroup;

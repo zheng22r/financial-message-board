@@ -18,7 +18,7 @@ const currencies = {
 })
 export class StockDetailsComponent implements OnChanges {
 
-    @Input() public chartType: 'candle' | 'line' | 'area' = 'candle';
+    @Input() public chartType: 'candle';
 
     @Input() public interval: Interval = { unit: 'hours', step: 1 };
     @Input() public range: SelectionRange = { start: null, end: null };
