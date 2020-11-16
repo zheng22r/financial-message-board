@@ -14,7 +14,6 @@ import { StockDataService } from "../../services/stock-data.service";
 
 export class StockListComponent implements OnDestroy {
   public selectedRows: Array<string>;
-  public unsortedSymbols: Array<string>;
   public sort: SortDescriptor[] = [];
   public StockList: Stock[];
 
@@ -30,8 +29,6 @@ export class StockListComponent implements OnDestroy {
       this.stockDataService.selectedStock = this.StockList[0];
       this.selectedRows = [this.StockList[0].symbol];
     }
-
-    this.unsortedSymbols = this.stockDataService.getUncategorizedSymbols();
   }
 
   public SelectCompanyStock(event: SelectionEvent): void {
