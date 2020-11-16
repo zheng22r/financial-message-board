@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     );
   }
 
-  onLogin(form: NgForm) {
+  login(form: NgForm) {
     if (form.invalid) {
       return;
     }
