@@ -12,8 +12,4 @@ export class ErrorService {
   throwError(message: string) {
     this.errorListener.next(message);
   }
-
-  handleError() {
-    this.errorListener.next(null);
-  }
 }
