@@ -2,11 +2,10 @@ import { Injectable } from "@angular/core";
 import { Observable, BehaviorSubject } from "rxjs";
 import { map } from "rxjs/operators";
 
-import { orderBy, SortDescriptor } from "@progress/kendo-data-query";
 import { SelectionRange } from "@progress/kendo-angular-dateinputs";
 import { MS_PER_MINUTE } from "@progress/kendo-date-math";
 
-import { stocksInPortfolio, unsortedStocks, heatmapStocks } from "../data/stocks";
+import { stocksInPortfolio, unsortedStocks } from "../data/stocks";
 import { Stock } from "../models";
 import { StockIntervalDetails } from "../models";
 
@@ -20,10 +19,6 @@ export class StockDataService {
             .pipe(map((stocks) => {
                     return stocks;
             }));
-    }
-
-    public getUncategorizedSymbols(): string[] {
-        return unsortedStocks.map(stock => stock.symbol);
     }
 
     public getStockIntervalDetails(symbol: string, range: SelectionRange, intervalInMinutes: number): StockIntervalDetails[] {
@@ -65,7 +60,7 @@ export class StockDataService {
                 close: Number(newPrice.toFixed(2)),
                 high: Number((high + (0.015 * high)).toFixed(2)),
                 low: Number((low - (0.015 * low)).toFixed(2)),
-                volume: this.getStocksTradeVolume(standingPoint.volume),
+                volume: this.getStocksPrice(standingPoint.volume),
                 date: new Date(dateInMs)
             });
         }
@@ -73,7 +68,7 @@ export class StockDataService {
         return data;
     }
 
-    private getStocksTradeVolume(oldValue: number): number {
+    private getStocksPrice(oldValue: number): number {
         const coef = Number.parseFloat((Math.random()).toFixed(2));
         const newValue = Number.parseFloat((oldValue + (oldValue * coef / 1.5)).toFixed(0));
         const diff = newValue - oldValue;

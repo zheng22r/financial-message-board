@@ -70,7 +70,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
     });
   }
 
-  onImagePicked(event: Event) {
+  imagePicked(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({ image: file });
     this.form.get("image").updateValueAndValidity();
@@ -81,7 +81,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
     reader.readAsDataURL(file);
   }
 
-  onSavePost() {
+  savePost() {
     if (this.form.invalid) {
       return;
     }

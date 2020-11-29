@@ -77,28 +77,7 @@
         </ng-template>
       </kendo-chart-series-item-tooltip>
     </kendo-chart-series-item>
-    <kendo-chart-series-item
-      *ngIf="chartType === 'line'"
-      [type]="'line'"
-      [data]="stockData"
-      [field]="'close'"
-      [style]="'smooth'"
-      [categoryField]="'date'"
-      [color]="'#2D73F5'"
-      [axis]="'close'"
-    >
-    </kendo-chart-series-item>
-    <kendo-chart-series-item
-      *ngIf="chartType === 'area'"
-      [type]="'area'"
-      [style]="'smooth'"
-      [data]="stockData"
-      [field]="'close'"
-      [axis]="'close'"
-      [categoryField]="'date'"
-      [color]="'#007BFF'"
-    >
-    </kendo-chart-series-item>
+
     <kendo-chart-series-item
       [type]="'column'"
       [data]="stockData"
