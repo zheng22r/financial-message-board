@@ -42,7 +42,7 @@ export class AuthService {
         this.token = token;
         if (token) {
           const expiresInDuration = response.expiresIn;
-          this.setAuthTimer(expiresInDuration);
+          this.setAuthTime(expiresInDuration);
           this.isAuthenticated = true;
           this.userId = response.userId;
           this.authStatusLCheck.next(true);
@@ -69,7 +69,7 @@ export class AuthService {
       this.token = authInformation.token;
       this.isAuthenticated = true;
       this.userId = authInformation.userId;
-      this.setAuthTimer(expiresIn / 1000);
+      this.setAuthTime(expiresIn / 1000);
       this.authStatusLCheck.next(true);
     }
   }
@@ -84,10 +84,10 @@ export class AuthService {
     this.router.navigate(["/"]);
   }
 
-  private setAuthTimer(duration: number) {
+  private setAuthTime(duration: number) {
     this.tokenTime = setTimeout(() => {
       this.logout();
-    }, duration * 1000);
+    }, duration * 1500);
   }
 
   private saveAuthData(token: string, expirationDate: Date, userId: string) {
