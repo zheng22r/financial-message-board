@@ -5,7 +5,7 @@
       <input matInput type="text" formControlName="title" placeholder="Post Title">
     </mat-form-field>
     <div>
-      <button mat-stroked-button type="button" (click)="filePicker.click()">Add a Image</button> (optional and only support jpeg)
+      <button mat-stroked-button type="button" (click)="filePicker.click()">Add a Image</button> (optional and only support jpg)
       <input type="file" #filePicker (change)="imagePicked($event)">
     </div>
     <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">

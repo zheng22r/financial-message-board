@@ -32,13 +32,15 @@ export class PostListComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.postsService.getPosts(this.postsPerPage, this.currentPage);
     this.userId = this.authService.getUserId();
+
     this.subscription = this.postsService
       .getPostUpdateListener()
       .subscribe((postData: { posts: Post[]; postCount: number }) => {
         this.isLoading = false;
         this.totalPosts = postData.postCount;
         this.posts = postData.posts;
-        this.posts = this.posts.reverse();
+        // new post place in front of older post
+        this.posts = this.ReversPost(this.posts);
       });
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authSubscription = this.authService
@@ -47,6 +49,15 @@ export class PostListComponent implements OnInit, OnDestroy {
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
       });
+  }
+
+  ReversPost(posts: Post[]): Post[] {
+    let reversePost: Post[];
+    reversePost = [];
+    for (let i = posts.length - 1; i >= 0; i--) {
+      reversePost.push(posts[i]);
+    }
+    return reversePost;
   }
 
   PageChange(pageData: PageEvent) {
