@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: "signup", component: SignupComponent },
 ];
 
+
 @NgModule({
   imports: [ RouterModule.forRoot(routes, { useHash: true }) ],
   exports: [RouterModule],

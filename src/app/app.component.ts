@@ -7,10 +7,11 @@ import { AuthService } from "./auth/auth.service";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
+  // testing testing
   constructor(
     private authService: AuthService,
   ) {}
-
+    // testing,,, this is a testing branch
   ngOnInit() {
     this.authService.autoAuthUser();
   }
